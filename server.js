@@ -16,8 +16,8 @@ const imageDir = path.join(__dirname, 'views', 'images');
 
 const ascOptions = {
     fit: 'box',
-    width: 100,
-    height: 50,
+    width: '100',
+    height: '100',
     color: false
 }
 
@@ -50,7 +50,7 @@ app.get('/image', (req, res, next) => {
     const randomNumber = randomGenerator(imagesArr.length);
 
     res.format({
-        'text/plain': () => {
+        'text/html': () => {
             res.status(200);
             res.type('text/html');
             res.send(`<img src="${imagesArr[randomNumber]}" width="80%" height="auto"></img>`);
@@ -67,7 +67,7 @@ app.get('/image', (req, res, next) => {
                 imageUrl: imagesArrPath[randomNumber]
             })
         },
-        'text/html': () => {
+        'text/plain': () => {
             console.log(`Path: ${imagesArrAbsPath[randomNumber]}`);
             asciify(imagesArrPath[randomNumber], ascOptions, (err, asciified) => {
                 if (err) {
@@ -97,8 +97,6 @@ app.get('/image/ascii-art', (req, res, next) => {
         }
         console.log(asciified)
         res.status(200);
-        // res.type('text/plain');
-        // res.send(asciified);
         res.render('ascii-art', {
             asciified: asciified
         })
