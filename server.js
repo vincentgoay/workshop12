@@ -68,7 +68,7 @@ app.get('/image', (req, res, next) => {
             })
         },
         'text/plain': () => {
-            console.log(`Path: ${imagesArrAbsPath[randomNumber]}`);
+            // console.log(`Path: ${imagesArrAbsPath[randomNumber]}`);
             asciify(imagesArrPath[randomNumber], ascOptions, (err, asciified) => {
                 if (err) {
                     console.log(`Error: ${err}`);
